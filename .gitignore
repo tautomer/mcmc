@@ -7,6 +7,7 @@ __pycache__/
 *.so
 
 # Distribution / packaging
+.DS_Store
 .Python
 env/
 build/
@@ -65,3 +66,4 @@ target/
 *.swp
 mcmc/*.swp
 mcmc/output
+output.png
