@@ -1,5 +1,5 @@
 [run]
 source = mcmc
 [report]
-include = mcmc/*
+include = *
 show_missing = True

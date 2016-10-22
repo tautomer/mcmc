@@ -1,4 +1,6 @@
-# assign random numbers to the coordinates
+# generate a empty graph with k nodes
+# get position from pygraphviz module
+# link all (0,k) edges to get a star graph
 
 # import packages
 import networkx as nx
@@ -14,7 +16,7 @@ class get_init():
         pass
 
 #   initialize a graph that all the other nodes
-#   connect to node 0 and write weight to edge attributes
+#   connect to node 0 and return the graph and position array
     def init_graph(self, k):
         G=nx.empty_graph(k)
         # get and store positions into array 'pos'

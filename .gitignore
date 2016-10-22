@@ -64,3 +64,4 @@ target/
 # vim swap file
 *.swp
 mcmc/*.swp
+mcmc/output
