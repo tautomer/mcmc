@@ -43,8 +43,8 @@ install:
           # Useful for debugging any issues with conda
           - conda info -a
          
-          - conda create -q -n test-environment python=$TRAVIS_PYTHON_VERSION atlas scipy matplotlib pandas statsmodels coverage 
-          - pip install setuptools python-coveralls nose-cov networkx numpy pygraphviz 
+          - conda create -q -n test-environment python=$TRAVIS_PYTHON_VERSION atlas scipy pandas statsmodels coverage 
+          - pip install setuptools python-coveralls nose-cov networkx numpy pygraphviz matplotlib 
           - source activate test-environment
           - python setup.py install
           
