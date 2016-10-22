@@ -6,7 +6,7 @@
 import networkx as nx
 import numpy as np
 from networkx.drawing.nx_agraph import graphviz_layout
-import pygraphviz
+#import pygraphviz
 import random
 import math
 
@@ -20,7 +20,7 @@ class get_init():
     def init_graph(self, k):
         G=nx.empty_graph(k)
         # get and store positions into array 'pos'
-        pos = graphviz_layout(G, prog='neato')
+        pos = nx.spring_layout(G, dim=2)
         for i in range(1,k):
             G.add_edge(0, i)
         return G,pos
