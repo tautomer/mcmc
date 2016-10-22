@@ -49,7 +49,7 @@ install:
           - python setup.py install
           
 script:   
-          - nosetests --with-cov --cov-config mcmc/.coveragerc --cover-html
+          - nosetests --with-cov --cov-config .coveragerc --cover-html
 
 after_success:
-          - coveralls --config_file mcmc/.coveragerc
+          - coveralls --config_file .coveragerc
