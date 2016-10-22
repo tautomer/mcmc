@@ -6,23 +6,22 @@
 # They are specified at the beginning of the program.
 
 # Begin importing packages
-from graph_init import get_init
-from update_graph import update_graph
-from monte_carlo import monte_carlo
-from plot import plot_graph
+from mcmc.graph_init import get_init
+from mcmc.update_graph import update_graph
+from mcmc.monte_carlo import monte_carlo
+from mcmc.plot import plot_graph
 import networkx as nx
 
 # Set parameters
 k = 8
 r = 1
-# this value is
-nsteps = 10
-
-# calculate number of all possible edges
-etot = k*(k-1)/2
 # this value is highly related to the value of theta
 # need think if it's necessary to associate T with weight automatically
 T = 80
+nsteps = 10000
+
+# calculate number of all possible edges
+etot = k*(k-1)/2
 # aliases of my own modules
 gi = get_init()
 ug = update_graph()
