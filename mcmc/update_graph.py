@@ -27,33 +27,31 @@ class update_graph():
             G.add_edge(u,v)
         return B,keep
 
-    def change_edges(self, k, G, keep):
+    def change_edges(self, k, G, keep, etot):
         # switch used to control the loop
+        trail = G.copy()
         switch = 1
         while (switch):
-            # get two different random integers within [0,k]
-            m,n = random.sample(range(0, k), 2)
-            # generate the random number to control add or remove edges
-            ctrl = random.randint(0,1)
-            if (ctrl):
-                # add edge (m,n)
-                # if edge already exists, cycle
-                if (m in G.neighbors(n)):
-                    continue
-                else:
-                    # if not, add edge
-                    G.add_edge(m,n)
+            if (trail.number_of_edges() == etot):
+                break
             else:
-                # delete edge (m,n)
-                # if this edge cannot be cut, cycle
-                if [m,n] in keep or [n,m] in keep :
-                    continue
+                # get two different random integers within [0,k]
+                lim = random.sample(range(0, k), 2)
+                lim.sort()
+                # if edge exists
+                if (lim[0] in trail.neighbors(lim[1])):
+                    # if edge cannot be deleted, cycle
+                    if [lim[0],lim[1]] in keep:
+                        continue
+                    else:
+                        # else remove the edge
+                        trail.remove_edge(lim[0],lim[1])
                 else:
-                    # if not, remove it
-                    G.remove_edge(m,n)
-            # jump out of the loop
-            switch = 0
-            return G
+                    # add edge (lim[0],lim[1])
+                    trail.add_edge(lim[0],lim[1])
+                # jump out of the loop
+                switch = 0
+        return trail
 
 
 
