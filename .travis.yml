@@ -44,7 +44,7 @@ install:
           - conda info -a
          
           - pip install setuptools python-coveralls nose-cov pygraphviz networkx 
-          - conda create -q -n test-environment python=$TRAVIS_PYTHON_VERSION atlas numpy scipy matplotlib nose dateutil pandas statsmodels coverage pygraphviz 
+          - conda create -q -n test-environment python=$TRAVIS_PYTHON_VERSION atlas numpy scipy matplotlib nose dateutil pandas statsmodels coverage graphviz networkx
           - source activate test-environment
           - python setup.py install
           
