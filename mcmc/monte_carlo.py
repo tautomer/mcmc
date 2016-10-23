@@ -5,6 +5,7 @@ import networkx as nx
 import math
 import random
 
+
 class monte_carlo():
 
     def __init__(self):

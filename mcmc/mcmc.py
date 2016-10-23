@@ -10,15 +10,14 @@ from graph_init import get_init
 from update_graph import update_graph
 from monte_carlo import monte_carlo
 from plot import plot_graph
-import networkx as nx
 
 # Set parameters
 k = 8
 r = 1
 # this value is highly related to the value of theta
 # need think if it's necessary to associate T with weight automatically
-T = 80
-nsteps = 10000
+T = 1.2
+nsteps = 10
 
 # calculate number of all possible edges
 etot = k*(k-1)/2
@@ -31,10 +30,8 @@ pg = plot_graph()
 # Generate initial graph and get positions of all nodes
 # G is the initial graph and pos is the matrix storing positions
 G, pos = gi.init_graph(k)
-
 # calculate weights of all possible edges
-w = gi.calc_weight(pos,k)
-
+w = gi.calc_weight(pos, k)
 # initialize the list graph to store all the graphs
 graph = [None]*0
 # write initial graph into graph[0]
