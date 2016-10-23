@@ -3,7 +3,7 @@ mcmc
 ===============================
 
 
-.. image:: https://img.shields.io/travis/tautomer/mcmc.svg
+.. image:: https://travis-ci.org/tautomer/mcmc.svg?branch=master
         :target: https://travis-ci.org/tautomer/mcmc
 
 .. image:: https://readthedocs.org/projects/markov-chain/badge/?version=latest
@@ -11,7 +11,7 @@ mcmc
         :alt: Documentation Status
 
 .. image:: https://coveralls.io/repos/github/tautomer/mcmc/badge.svg?branch=master
-     :target: https://coveralls.io/github/tautomer/mcmc?branch=master
+        :target: https://coveralls.io/github/tautomer/mcmc?branch=master
 
 
 
