@@ -20,6 +20,7 @@ r = 1
 T = 80
 nsteps = 10000
 
+
 # calculate number of all possible edges
 etot = k*(k-1)/2
 # aliases of my own modules
