@@ -27,6 +27,7 @@ ug = update_graph()
 mc = monte_carlo()
 pg = plot_graph()
 
+
 # Generate initial graph and get positions of all nodes
 # G is the initial graph and pos is the matrix storing positions
 G, pos = gi.init_graph(k)
