@@ -6,7 +6,7 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
 
-class plot_graph():
+class PlotGraph:
 
     def __init__(self):
         pass

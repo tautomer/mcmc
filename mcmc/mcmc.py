@@ -6,10 +6,10 @@
 # They are specified at the beginning of the program.
 
 # Begin importing packages
-from graph_init import get_init
-from update_graph import update_graph
-from monte_carlo import monte_carlo
-from plot import plot_graph
+from graph_init import GetInit
+from update_graph import UpdateGraph
+from monte_carlo import MonteCarlo
+from plot import PlotGraph
 
 # Set parameters
 k = 8
@@ -22,10 +22,10 @@ nsteps = 10
 # calculate number of all possible edges
 etot = k*(k-1)/2
 # aliases of my own modules
-gi = get_init()
-ug = update_graph()
-mc = monte_carlo()
-pg = plot_graph()
+gi = GetInit()
+ug = UpdateGraph()
+mc = MonteCarlo()
+pg = PlotGraph()
 
 
 # Generate initial graph and get positions of all nodes
@@ -50,7 +50,7 @@ for i in range(1, nsteps):
     # calculate the probability q(j|i)
     prob_i = mc.calc_prob(keep, etot)
     # get the new graph candidate tmp
-    tmp = ug.change_edges(k, graph[i-1], keep, etot)
+    tmp = ug.change_edges(k, graph[i-1], keep)
     # check necessary edges of the candidate and overwrite the array keep
     keep = ug.chk_spanning(tmp)
     # calculate the probability q(i|j)

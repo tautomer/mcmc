@@ -6,21 +6,21 @@ import math
 import random
 
 
-class monte_carlo():
+class MonteCarlo():
 
     def __init__(self):
         pass
 
     # calculate theta for target graph
-    def calc_theta(self, G, w, r):
+    def calc_theta(self, g, w, r):
         # retrieve weights from the array w
         # assign to sll connected edegs
-        for u,v in G.edges():
-            G.add_edge(u,v,weight=w[u][v])
+        for u, v in g.edges():
+            g.add_edge(u, v, weight=w[u][v])
         # use size function to get the sum of all weight
-        sum_all_weight = G.size(weight='weight')
+        sum_all_weight = g.size(weight='weight')
         # get all shortest path from node 0 and write to a dictionary
-        all_path_0 = nx.single_source_dijkstra_path_length(G,0)
+        all_path_0 = nx.single_source_dijkstra_path_length(g, 0)
         # sum all length
         sum_length_0 = sum(all_path_0.values())
         # get theta
@@ -34,9 +34,9 @@ class monte_carlo():
 
     # run Metropolis Monte Carlo
     # G_i is the old graph and G_j is the proposed new graph
-    def metropolis(self, theta_i, theta_j, prob_i, prob_j, T, G_i, G_j):
+    def metropolis(self, theta_i, theta_j, prob_i, prob_j, t, g_i, g_j):
         # the ratio of Pi_j and Pi_i
-        temp = math.exp(-(theta_j - theta_i)/T)
+        temp = math.exp(-(theta_j - theta_i)/t)
         # the ratio of p_j and p_i
         temp1 = prob_j/prob_i
         # the value used to compare with 1
@@ -50,8 +50,8 @@ class monte_carlo():
             pass
         else:
             # else, deep copy G_i to G_j, i.e., repeat
-            G_j = G_i.copy()
-        return G_j
+            g_j = g_i.copy()
+        return g_j
 
 
 
