@@ -6,8 +6,8 @@ mcmc
 .. image:: https://img.shields.io/travis/tautomer/mcmc.svg
         :target: https://travis-ci.org/tautomer/mcmc
 
-.. image:: https://readthedocs.org/projects/mcmc/badge/?version=latest
-        :target: https://markov-chain.readthedocs.io/en/latest/?badge=latest
+.. image:: https://readthedocs.org/projects/markov-chain/badge/?version=latest
+        :target: http://markov-chain.readthedocs.io/en/latest/?badge=latest
         :alt: Documentation Status
 
 .. image:: https://coveralls.io/repos/github/tautomer/mcmc/badge.svg?branch=master
