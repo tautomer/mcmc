@@ -59,7 +59,6 @@ for i in range(1, nsteps):
     # run Metropolis and update graph list based on acceptance
     graph.append(mc.metropolis(theta_i, theta_j, prob_i, prob_j, T, graph[i-1], tmp))
 
-# demo of output, just plot the last two graphs in the list
-pg.plot_this_graph(pos, graph[nsteps-2])
+# demo of output, just plot the last graph in the list
 pg.plot_this_graph(pos, graph[nsteps-1])
 
