@@ -7,7 +7,7 @@ mcmc
         :target: https://travis-ci.org/tautomer/mcmc
 
 .. image:: https://readthedocs.org/projects/mcmc/badge/?version=latest
-        :target: https://mcmc.readthedocs.io/en/latest/?badge=latest
+        :target: https://markov-chain.readthedocs.io/en/latest/?badge=latest
         :alt: Documentation Status
 
 .. image:: https://coveralls.io/repos/github/tautomer/mcmc/badge.svg?branch=master
@@ -17,6 +17,14 @@ mcmc
 
 A small program for Markov chain Monte Carlo simulations.
 
+Currently you can run the program under the root directory by 'python3 mcmc/mcmc.py'. 
+There are four parameters for this program,
+k ---------- the number of nodes
+r ---------- the weight coefficient
+T ---------- time step
+nsteps ----- number of total steps ( graphs ).
+You can modify those parameters in mcmc/mcmc.py
+
 
 * Free software: MIT license
 * Documentation: https://mcmc.readthedocs.io.
@@ -25,7 +33,13 @@ A small program for Markov chain Monte Carlo simulations.
 Features
 --------
 
-* TODO
+Print out the final graph to the figure called output.png
+
+
+Todo
+--------
+* Move the main program, mcmc.py, to the root directory and hold the coverage test.
+* Fulfill all the necessary functions.
 
 Credits
 ---------
