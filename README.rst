@@ -3,15 +3,15 @@ mcmc
 ===============================
 
 
-.. image:: https://travis-ci.org/tautomer/mcmc.svg?branch=dev
+.. image:: https://travis-ci.org/tautomer/mcmc.svg?branch=test
     :target: https://travis-ci.org/tautomer/mcmc
 
 .. image:: https://readthedocs.org/projects/markov-chain/badge/?version=latest
         :target: http://markov-chain.readthedocs.io/en/latest/?badge=latest
         :alt: Documentation Status
 
-.. image:: https://coveralls.io/repos/github/tautomer/mcmc/badge.svg?branch=dev
-     :target: https://coveralls.io/github/tautomer/mcmc?branch=dev
+.. image:: https://coveralls.io/repos/github/tautomer/mcmc/badge.svg?branch=test
+     :target: https://coveralls.io/github/tautomer/mcmc?branch=test
 
 
 
