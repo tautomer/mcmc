@@ -6,10 +6,10 @@
 # They are specified at the beginning of the program.
 
 # Begin importing packages
-from mcmc.graph_init import get_init
-from mcmc.update_graph import update_graph
-from mcmc.monte_carlo import monte_carlo
-from mcmc.plot import plot_graph
+from graph_init import get_init
+from update_graph import update_graph
+from monte_carlo import monte_carlo
+from plot import plot_graph
 import networkx as nx
 
 # Set parameters
@@ -18,7 +18,7 @@ r = 1
 # this value is highly related to the value of theta
 # need think if it's necessary to associate T with weight automatically
 T = 80
-nsteps = 1000
+nsteps = 10000
 
 # calculate number of all possible edges
 etot = k*(k-1)/2
@@ -39,6 +39,10 @@ w = gi.calc_weight(pos,k)
 graph = [None]*0
 # write initial graph into graph[0]
 graph.append(G)
+# get the the number of neighbors of node 0
+neighbor_0 = len(graph[0].neighbors(0))
+# get the number of edges in the whole graph
+n_edge = graph[0].number_of_edges()
 
 # begin loop over all steps
 for i in range(1, nsteps):
@@ -58,8 +62,14 @@ for i in range(1, nsteps):
     theta_j = mc.calc_theta(tmp, w, r)
     # run Metropolis and update graph list based on acceptance
     graph.append(mc.metropolis(theta_i, theta_j, prob_i, prob_j, T, graph[i-1], tmp))
+    neighbor_0 += len(graph[i].neighbors(0))
+    n_edge += graph[i].number_of_edges()
 
-# demo of output, just plot the last two graphs in the list
-pg.plot_this_graph(pos, graph[nsteps-2])
+# demo of output, just plot the last graph in the list
 pg.plot_this_graph(pos, graph[nsteps-1])
+
+# print out the expected number of edges connected to vertex 0
+print(neighbor_0/nsteps)
+# print out the expected number of edges in the entire graph
+print(n_edge/nsteps)
 
