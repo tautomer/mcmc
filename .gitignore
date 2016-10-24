@@ -68,3 +68,4 @@ mcmc/*.swp
 mcmc/output
 output.png
 mcmc/.coverage
+mcmc/edgelist

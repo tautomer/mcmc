@@ -17,7 +17,7 @@ r = 1
 # this value is highly related to the value of theta
 # need think if it's necessary to associate T with weight automatically
 T = 1.2
-nsteps = 10
+nsteps = 30000
 
 # calculate number of all possible edges
 etot = k*(k-1)/2
@@ -41,33 +41,45 @@ graph.append(G)
 neighbor_0 = len(graph[0].neighbors(0))
 # get the number of edges in the whole graph
 n_edge = graph[0].number_of_edges()
-
+# check necessary edges of the zeroth graph
+keep_i = ug.chk_spanning(graph[0])
+# calculate the probability q(j|i) for the zeroth graph
+prob_i = mc.calc_prob(keep_i, etot)
+# calculate thetas for zeroth graphs
+theta_i, max_i = mc.calc_theta(graph[0], w, r)
+# sum the maximum length
+sum_max_len = max_i
+# I/O part
+expectations = open('output', 'w')
+edges = open('edgelist', 'w')
+print('{}'.format(pos), file=edges)
+print('{}'.format(graph[0].edges()), file=edges)
 # begin loop over all steps
 for i in range(1, nsteps):
-    # check necessary edges of the (i-1)th graph
-    # can be optimized later
-    keep = ug.chk_spanning(graph[i-1])
-    # calculate the probability q(j|i)
-    prob_i = mc.calc_prob(keep, etot)
     # get the new graph candidate tmp
-    tmp = ug.change_edges(k, graph[i-1], keep)
-    # check necessary edges of the candidate and overwrite the array keep
-    keep = ug.chk_spanning(tmp)
+    tmp = ug.change_edges(k, graph[i-1], keep_i)
+    # check necessary edges of the candidate
+    keep_j = ug.chk_spanning(tmp)
     # calculate the probability q(i|j)
-    prob_j = mc.calc_prob(keep, etot)
-    # calculate thetas for both graphs
-    theta_i = mc.calc_theta(graph[i-1], w, r)
-    theta_j = mc.calc_theta(tmp, w, r)
-    # run Metropolis and update graph list based on acceptance
-    graph.append(mc.metropolis(theta_i, theta_j, prob_i, prob_j, T, graph[i-1], tmp))
+    prob_j = mc.calc_prob(keep_j, etot)
+    # calculate theta and maximum path length for candidate
+    theta_j, max_j = mc.calc_theta(tmp, w, r)
+    # run Metropolis
+    tmp, theta_i, prob_i, keep_i, max_i = mc.metropolis(theta_i, theta_j, prob_i, prob_j, T, graph[i-1], tmp, keep_i, keep_j, max_i, max_j)
+    # write initial graph into graph[i]
+    graph.append(tmp)
+    # quantities required for output
     neighbor_0 += len(graph[i].neighbors(0))
     n_edge += graph[i].number_of_edges()
+    sum_max_len += max_i
+    print('{:6d}{:9.4f}{:9.4f}{:9.4f}'.format(i, neighbor_0/(i+1), n_edge/(i+1), sum_max_len/(i+1)), file=expectations)
+    print('{}'.format(graph[i].edges()), file=edges)
 
 # demo of output, just plot the last graph in the list
 pg.plot_this_graph(pos, graph[nsteps-1])
 
 # print out the expected number of edges connected to vertex 0
-print(neighbor_0/nsteps)
+#print(neighbor_0/nsteps)
 # print out the expected number of edges in the entire graph
-print(n_edge/nsteps)
+#print(n_edge/nsteps)
 

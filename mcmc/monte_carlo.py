@@ -23,9 +23,11 @@ class MonteCarlo():
         all_path_0 = nx.single_source_dijkstra_path_length(g, 0)
         # sum all length
         sum_length_0 = sum(all_path_0.values())
+        #  maximum distance of the shortest path that connects vertex 0
+        max_len = all_path_0[max(all_path_0)]
         # get theta
         theta = r*sum_all_weight + sum_length_0
-        return theta
+        return theta, max_len
 
     # calculate the probability q(j|i)
     def calc_prob(self, keep, etot):
@@ -34,7 +36,7 @@ class MonteCarlo():
 
     # run Metropolis Monte Carlo
     # G_i is the old graph and G_j is the proposed new graph
-    def metropolis(self, theta_i, theta_j, prob_i, prob_j, t, g_i, g_j):
+    def metropolis(self, theta_i, theta_j, prob_i, prob_j, t, g_i, g_j, keep_i, keep_j, max_i, max_j):
         # the ratio of Pi_j and Pi_i
         temp = math.exp(-(theta_j - theta_i)/t)
         # the ratio of p_j and p_i
@@ -47,11 +49,14 @@ class MonteCarlo():
         ran = random.uniform(0, 1)
         # if minimum is larger than random, accept the move
         if aij >= ran:
-            pass
+            theta_i = theta_j
+            prob_i = prob_j
+            keep_i = keep_j
+            max_i = max_j
         else:
             # else, deep copy G_i to G_j, i.e., repeat
             g_j = g_i.copy()
-        return g_j
+        return g_j, theta_i, prob_i, keep_i, max_i
 
 
 
