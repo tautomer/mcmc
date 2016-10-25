@@ -18,7 +18,7 @@ r = 1
 # this value is highly related to the value of theta
 # need think if it's necessary to associate T with weight automatically
 T = 1.2
-nsteps = 3
+nsteps = 30000
 
 # calculate number of all possible edges
 etot = k*(k-1)/2
@@ -99,6 +99,3 @@ pg.plot_most_probable(k, pos, edge_list, summary)
 expectations.close()
 edges.close()
 summary.close()
-
-
-

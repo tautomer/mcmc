@@ -64,17 +64,3 @@ class UpdateGraph:
             # jump out of the loop
             switch = 0
         return trail
-
-
-
-
-
-
-
-
-
-
-
-
-
-

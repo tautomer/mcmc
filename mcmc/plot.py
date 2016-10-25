@@ -60,7 +60,3 @@ class PlotGraph:
         g = nx.empty_graph(k)
         nx.draw_networkx(g, pos, edgelist=list_edge, node_size=20)
         fig.savefig('top.png')
-
-
-
-

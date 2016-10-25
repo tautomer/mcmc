@@ -36,6 +36,3 @@ class GetInit:
                     square += (pos[i][m] - pos[j][m])**2
                 w[i][j] = math.sqrt(square)
         return w
-
-
-
