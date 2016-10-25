@@ -24,7 +24,7 @@ class MonteCarlo():
         # sum all length
         sum_length_0 = sum(all_path_0.values())
         #  maximum distance of the shortest path that connects vertex 0
-        max_len = all_path_0[max(all_path_0)]
+        max_len = max(all_path_0.values())
         # get theta
         theta = r*sum_all_weight + sum_length_0
         return theta, max_len
