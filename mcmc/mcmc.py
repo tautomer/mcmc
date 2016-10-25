@@ -10,7 +10,12 @@ from graph_init import GetInit
 from update_graph import UpdateGraph
 from monte_carlo import MonteCarlo
 from plot import PlotGraph
-
+import sys
+import os
+dir_root = os.path.realpath(
+               os.path.join(os.path.dirname(os.path.realpath(__file__)), '..'))
+if not dir_root in sys.path:
+    sys.path.insert(0, dir_root)
 
 # Set parameters
 k = 8
