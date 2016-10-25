@@ -55,7 +55,7 @@ class MonteCarlo():
             max_i = max_j
         else:
             # else, deep copy G_i to G_j, i.e., repeat
-            g_j = g_i.copy()
+            g_j = g_i
         return g_j, theta_i, prob_i, keep_i, max_i
 
 
