@@ -39,6 +39,10 @@ class PlotGraph:
         # again may require optimization
         plt.figure(figsize=(5, 5))
         fig = plt.figure()
+        # dump out initial 1/5 of the list
+        ind = len(edge_list)
+        ind = ind//5
+        edge_list = edge_list[ind:]
         # initialize a new dictionary
         hist = {}
         # begin count the histogram

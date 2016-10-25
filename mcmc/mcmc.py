@@ -37,12 +37,8 @@ pg = PlotGraph()
 tmp, pos = gi.init_graph(k)
 # calculate weights of all possible edges
 w = gi.calc_weight(pos, k)
-# initialize the list graph to store all the graphs
-#graph = [None]*0
 # initialize the list to store all the edge list in the type of string
 edge_list = [None]*0
-# write initial graph into graph[0]
-#graph.append(G)
 # write initial edge list into edge_list[0]
 edge_list.append(str(tmp.edges()))
 # get the the number of neighbors of node 0
@@ -78,9 +74,6 @@ for i in range(1, nsteps):
     theta_j, max_j = mc.calc_theta(tmp_new, w, r)
     # run Metropolis
     tmp, theta_i, prob_i, keep_i, max_i = mc.metropolis(theta_i, theta_j, prob_i, prob_j, T, tmp, tmp_new, keep_i, keep_j, max_i, max_j)
-    # write initial graph into graph[i]
-    # original graphs can be throw away now
-    #graph.append(tmp)
     # write edge list into edge_list
     edge_list.append(str(tmp.edges()))
     # quantities required for output
