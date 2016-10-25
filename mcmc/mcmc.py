@@ -62,6 +62,7 @@ summary = open('summary', 'w')
 print('{}{}'.format('total number of nodes:  ', k), file=summary)
 print('{}{}'.format('nodes postions:  ', pos), file=summary)
 print('{}'.format(graph[0].edges()), file=edges)
+print('{}{}{}{}'.format('nsteps  ', 'degree_0  ', 'n_edges  ', 'max_len'), file=expectations)
 # begin loop over all steps
 for i in range(1, nsteps):
     # get the new graph candidate tmp

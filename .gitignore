@@ -72,3 +72,4 @@ mcmc/edgelist
 mcmc/top.png
 mcmc/sorted_histogram
 mcmc/summary
+.idea/*
