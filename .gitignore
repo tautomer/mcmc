@@ -69,3 +69,6 @@ mcmc/output
 output.png
 mcmc/.coverage
 mcmc/edgelist
+mcmc/top.png
+mcmc/sorted_histogram
+mcmc/summary

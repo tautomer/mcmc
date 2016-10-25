@@ -11,13 +11,14 @@ from update_graph import UpdateGraph
 from monte_carlo import MonteCarlo
 from plot import PlotGraph
 
+
 # Set parameters
 k = 8
 r = 1
 # this value is highly related to the value of theta
 # need think if it's necessary to associate T with weight automatically
 T = 1.2
-nsteps = 30000
+nsteps = 3
 
 # calculate number of all possible edges
 etot = k*(k-1)/2
@@ -35,8 +36,12 @@ G, pos = gi.init_graph(k)
 w = gi.calc_weight(pos, k)
 # initialize the list graph to store all the graphs
 graph = [None]*0
+# initialize the list to store all the edge list in the type of string
+edge_list = [None]*0
 # write initial graph into graph[0]
 graph.append(G)
+# write initial edge list into edge_list[0]
+edge_list.append(str(G.edges()))
 # get the the number of neighbors of node 0
 neighbor_0 = len(graph[0].neighbors(0))
 # get the number of edges in the whole graph
@@ -52,7 +57,10 @@ sum_max_len = max_i
 # I/O part
 expectations = open('output', 'w')
 edges = open('edgelist', 'w')
-print('{}'.format(pos), file=edges)
+summary = open('summary', 'w')
+# output information
+print('{}{}'.format('total number of nodes:  ', k), file=summary)
+print('{}{}'.format('nodes postions:  ', pos), file=summary)
 print('{}'.format(graph[0].edges()), file=edges)
 # begin loop over all steps
 for i in range(1, nsteps):
@@ -67,19 +75,30 @@ for i in range(1, nsteps):
     # run Metropolis
     tmp, theta_i, prob_i, keep_i, max_i = mc.metropolis(theta_i, theta_j, prob_i, prob_j, T, graph[i-1], tmp, keep_i, keep_j, max_i, max_j)
     # write initial graph into graph[i]
+    # original graphs can be throw away now
     graph.append(tmp)
+    # write edge list into edge_list
+    edge_list.append(str(tmp.edges()))
     # quantities required for output
     neighbor_0 += len(graph[i].neighbors(0))
     n_edge += graph[i].number_of_edges()
     sum_max_len += max_i
+    # for checking propose
+    # since the convergence is really fast, I did not truncate the data ( need correct this probably )
+    # plot out the 'trajectory' is pretty cool
     print('{:6d}{:9.4f}{:9.4f}{:9.4f}'.format(i, neighbor_0/(i+1), n_edge/(i+1), sum_max_len/(i+1)), file=expectations)
     print('{}'.format(graph[i].edges()), file=edges)
 
+# print out the expected numbers of edges connected to vertex 0 and edges in the entire graph
+print('{}{}{}{}{}'.format('the expected number of edges connected to vertex 0:  ', neighbor_0/nsteps, "\n", 'the expected number of edges in the entire graph:  ', n_edge/nsteps), file=summary)
+
 # demo of output, just plot the last graph in the list
 pg.plot_this_graph(pos, graph[nsteps-1])
+pg.plot_most_probable(k, pos, edge_list, summary)
+# close files
+expectations.close()
+edges.close()
+summary.close()
 
-# print out the expected number of edges connected to vertex 0
-#print(neighbor_0/nsteps)
-# print out the expected number of edges in the entire graph
-#print(n_edge/nsteps)
+
 
