@@ -50,7 +50,7 @@ install:
           
 script:   
 #- cd mcmc
-          - nosetests --with-cov --cov-config ../.coveragerc --cover-html
+          - nosetests --with-cov --cov-config .coveragerc --cover-html
 
 after_success:
           - coveralls --config_file ../.coveragerc
