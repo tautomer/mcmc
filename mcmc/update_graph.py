@@ -14,22 +14,22 @@ class UpdateGraph:
     # check necessary edges for the target graph, G
     # though called spanning, this isn't truly checking spanning trees
     # just loop over and all edges, delete and check connectedness
-    def chk_spanning(self, G):
+    def chk_bridges(self, g):
         # initialize a empty list to store necessary edges
         keep = [None]*0
         # loop over all current edges
-        for u, v in G.edges():
+        for u, v in g.edges():
             # remove this edge
-            G.remove_edge(u, v)
+            g.remove_edge(u, v)
             # check connectedness
-            if nx.is_connected(G):
+            if nx.is_connected(g):
                 # if connected, pass
                 pass
             else:
                 # if not, append list
                 keep.append([u,v])
             # restore the deleted edge
-            G.add_edge(u, v)
+            g.add_edge(u, v)
         # return the list for necessary edges
         return keep
 

@@ -40,7 +40,7 @@ class MonteCarlo():
         # the ratio of Pi_j and Pi_i
         temp = math.exp(-(theta_j - theta_i)/t)
         # the ratio of p_j and p_i
-        temp1 = prob_j/prob_i
+        temp1 = prob_i/prob_j
         # the value used to compare with 1
         temp2 = temp*temp1
         # get minimum

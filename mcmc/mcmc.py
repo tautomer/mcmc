@@ -2,7 +2,7 @@
 # The main program for Markov chain Monte Carlo simulation
 # This program requires four initial parameters, k, r, T and nstep.
 # where k is the number of nodes, r is the weight coefficient.
-# T is time step, nsteps is total number of steps, i.e., graphs.
+# T is temperature, nsteps is total number of steps, i.e., graphs.
 # They are specified at the beginning of the program.
 
 # Begin importing packages
@@ -20,10 +20,8 @@ if not dir_root in sys.path:
 # Set parameters
 k = 8
 r = 1
-# this value is highly related to the value of theta
-# need think if it's necessary to associate T with weight automatically
-T = 1.2
-nsteps = 30000
+T = 300
+nsteps = 3000
 
 # calculate number of all possible edges
 etot = k*(k-1)/2
@@ -52,7 +50,7 @@ neighbor_0 = len(graph[0].neighbors(0))
 # get the number of edges in the whole graph
 n_edge = graph[0].number_of_edges()
 # check necessary edges of the zeroth graph
-keep_i = ug.chk_spanning(graph[0])
+keep_i = ug.chk_bridges(graph[0])
 # calculate the probability q(j|i) for the zeroth graph
 prob_i = mc.calc_prob(keep_i, etot)
 # calculate thetas for zeroth graphs
@@ -73,7 +71,7 @@ for i in range(1, nsteps):
     # get the new graph candidate tmp
     tmp = ug.change_edges(k, graph[i-1], keep_i)
     # check necessary edges of the candidate
-    keep_j = ug.chk_spanning(tmp)
+    keep_j = ug.chk_bridges(tmp)
     # calculate the probability q(i|j)
     prob_j = mc.calc_prob(keep_j, etot)
     # calculate theta and maximum path length for candidate
