@@ -6,10 +6,10 @@
 # They are specified at the beginning of the program.
 
 # Begin importing packages
-from graph_init import GetInit
-from update_graph import UpdateGraph
-from monte_carlo import MonteCarlo
-from plot import PlotGraph
+from mcmc.graph_init import GetInit
+from mcmc.update_graph import UpdateGraph
+from mcmc.monte_carlo import MonteCarlo
+from mcmc.plot import PlotGraph
 import sys
 import os
 dir_root = os.path.realpath(

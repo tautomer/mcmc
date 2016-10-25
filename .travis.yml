@@ -44,13 +44,12 @@ install:
           - conda info -a
          
           - conda create -q -n test-environment python=$TRAVIS_PYTHON_VERSION atlas scipy dateutil pandas statsmodels coverage
-            #- conda create -q -n test-environment python=$TRAVIS_PYTHON_VERSION atlas numpy scipy matplotlib pandas statsmodels coverage 
           - pip install setuptools python-coveralls nose-cov networkx matplotlib numpy
           - source activate test-environment
           - python setup.py install
           
 script:   
-          - cd mcmc
+#- cd mcmc
           - nosetests --with-cov --cov-config ../.coveragerc --cover-html
 
 after_success:
