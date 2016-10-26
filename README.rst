@@ -1,6 +1,6 @@
-===============================
+==================================
 mcmc ---- Markov Chain Monte Carlo
-===============================
+==================================
 
 .. image:: https://travis-ci.org/tautomer/mcmc.svg?branch=test
         :target: https://travis-ci.org/tautomer/mcmc
@@ -19,7 +19,8 @@ A small program for Markov chain Monte Carlo simulations.
 Features
 --------
 
-Currently you can run the program under the root directory by 'python3 mcmc/mcmc.py'. 
+Currently you can run the program from anywhere you like by typing 'python3 path_to_source_code_folder/mcmc.py'. Output
+files will saved to the folder where you run the command.
 There are four parameters for this program,
 
 k ---------- the number of nodes
@@ -32,7 +33,8 @@ nsteps ----- number of total steps ( graphs ).
 
 You can modify those parameters in mcmc/mcmc.py
 
-* Note: The simulations is highly sensitive to temperature. High temperature leads to fast convergence, while less stable distribution, i.e., you will get more kinds of graphs. On the other hand, low temperature causes several times slower convergence and failing in elasticity assumption.
+* Note: The simulations is highly sensitive to temperature. High temperature leads to fast convergence, while less stable distribution,
+i.e., you will get more kinds of graphs. On the other hand, low temperature causes several times slower convergence and failing in elasticity assumption.
 
 The program will produce several output files.
 
@@ -51,16 +53,16 @@ Some summarized information is saved to 'summary' for your convenience.
 
 
 * Free software: MIT license
-* Documentation: https://mcmc.readthedocs.io.
+* Documentation: .. _latest: https://mcmc.readthedocs.io.
 
 
 Todo
---------
+----
 * Some improvements on plot.py.
 
 
 Credits
----------
+-------
 
 This package was created with Cookiecutter_ and the audreyr/cookiecutter-pypackage_ project template.
 

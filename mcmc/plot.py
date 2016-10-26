@@ -42,6 +42,7 @@ class PlotGraph:
         plt.figure(figsize=(5, 5))
         fig = plt.figure()
         # dump out initial 1/5 of the list
+        # the value is related to T, so may need to be modified once T is changed
         ind = len(edge_list)
         ind = ind//5
         edge_list = edge_list[ind:]
@@ -61,7 +62,9 @@ class PlotGraph:
         histo.close()
         # convert the most probable string back to list
         list_edge = ast.literal_eval(sorted_hist[0][0])
-        print('{}{}{}{}{}'.format('most probable graph structure (edges):  ', list_edge, "\n", 'number of occurrence of this graph:  ', sorted_hist[0][1]), file=summary)
+        print('{}{}{}{}{}{}{}{}'.format('total number of graphs generated under assumed equilibrium  ', len(sorted_hist), "\n",
+                                        'most probable graph structure (edges):  ', list_edge, "\n",
+                                        'number of occurrence of this graph:  ', sorted_hist[0][1]), file=summary)
         # draw
         g = nx.empty_graph(k)
         nx.draw_networkx(g, pos, edgelist=list_edge, node_size=20)
