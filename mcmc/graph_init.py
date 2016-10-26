@@ -5,12 +5,10 @@
 # import packages
 import networkx as nx
 import numpy as np
-from networkx.drawing.nx_agraph import graphviz_layout
-#import pygraphviz
-import random
 import math
 
-class get_init():
+
+class GetInit:
 
     def __init__(self):
         pass
@@ -18,12 +16,12 @@ class get_init():
 #   initialize a graph that all the other nodes
 #   connect to node 0 and return the graph and position array
     def init_graph(self, k):
-        G=nx.empty_graph(k)
+        g = nx.empty_graph(k)
         # get and store positions into array 'pos'
-        pos = nx.spring_layout(G, dim=2)
-        for i in range(1,k):
-            G.add_edge(0, i)
-        return G,pos
+        pos = nx.spring_layout(g, dim=2)
+        for i in range(1, k):
+            g.add_edge(0, i)
+        return g, pos
 
 #   calculate the weight of all the possible edges and
 #   store the values into a matrix for future use
@@ -38,6 +36,3 @@ class get_init():
                     square += (pos[i][m] - pos[j][m])**2
                 w[i][j] = math.sqrt(square)
         return w
-
-
-

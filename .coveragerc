@@ -1,5 +1,6 @@
 [run]
 source = mcmc
 [report]
-omit = travis_pypi_setup.py,setup.py
+#include = *
+omit = travis_pypi_setup.py,setup.py, test/*
 show_missing = True
