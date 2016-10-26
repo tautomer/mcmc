@@ -29,8 +29,8 @@ class TestInit(unittest.TestCase):
 #    def test_000_something(self):
 #        pass
 
-    def test_init_graph_fail_with_string_input(self):
-        self.assertRaises(ValueError, self.init.init_graph, 1.2)
+#    def test_init_graph_fail_with_string_input(self):
+#        self.assertRaises(ValueError, self.init.init_graph, 1.2)
 
     def test_init_graph_success_with_string_input(self):
         g, test = self.init.init_graph(4)
