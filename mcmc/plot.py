@@ -56,8 +56,8 @@ class PlotGraph:
         # sort the dictionary for output
         sorted_hist = sorted(hist.items(), key=operator.itemgetter(1), reverse=True)
         # write to file
-        for key, value in sorted_hist:
-            print('{}{:4d}'.format(key, value), file=histo)
+        for i in range(len(sorted_hist)):
+            print('{:6d}{}{}{:4d}'.format(i+1, '  ', sorted_hist[i][0], sorted_hist[i][1]), file=histo)
         histo.close()
         # convert the most probable string back to list
         list_edge = ast.literal_eval(sorted_hist[0][0])
