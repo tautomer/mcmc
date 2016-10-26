@@ -29,6 +29,7 @@ nsteps ----- number of total steps ( graphs ).
 You can modify those parameters in mcmc/mcmc.py
 
 * Note: The simulations is highly sensitive to temperature. High temperature leads to fast convergence, while less stable distribution, i.e., you will get more kinds of graphs. On the other hand, low temperature causes several times slower convergence and failing in elasticity assumption.
+* Ergodicity can be verified with smaller number of nodes, e.g., 5 and a reasonable number of steps.
 
 The program will produce several output files.
 
