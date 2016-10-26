@@ -29,11 +29,7 @@ python:
 install:
           # We do this conditionally because it saves us some downloading if the
           # version is the same.
-          - if [[ "$TRAVIS_PYTHON_VERSION" == "2.7" ]]; then
-              wget https://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh -O miniconda.sh;
-            else
-              wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
-            fi
+          - wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
           - chmod +x miniconda.sh
           - bash miniconda.sh -b -p $HOME/miniconda
           - export PATH="$HOME/miniconda/bin:$PATH"
@@ -44,7 +40,6 @@ install:
           - conda info -a
          
           - conda create -q -n test-environment python=$TRAVIS_PYTHON_VERSION atlas scipy dateutil pandas statsmodels coverage
-            #- conda create -q -n test-environment python=$TRAVIS_PYTHON_VERSION atlas numpy scipy matplotlib pandas statsmodels coverage 
           - pip install setuptools python-coveralls nose-cov networkx matplotlib numpy
           - source activate test-environment
           - python setup.py install

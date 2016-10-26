@@ -1,6 +1,6 @@
-===============================
+==================================
 mcmc ---- Markov Chain Monte Carlo
-===============================
+==================================
 
 .. image:: https://travis-ci.org/tautomer/mcmc.svg?branch=master
         :target: https://travis-ci.org/tautomer/mcmc
@@ -15,7 +15,12 @@ mcmc ---- Markov Chain Monte Carlo
 
 A small program for Markov chain Monte Carlo simulations.
 
-Currently you can run the program under the root directory by 'python3 mcmc/mcmc.py'. 
+
+Features
+--------
+
+Currently you can run the program from anywhere you like by typing 'python3 path_to_source_code_folder/mcmc.py'. Output
+files will saved to the folder where you run the command.
 There are four parameters for this program,
 
 k ---------- the number of nodes
@@ -48,22 +53,17 @@ Some summarized information is saved to 'summary' for your convenience.
 
 
 * Free software: MIT license
-* Documentation: https://mcmc.readthedocs.io.
-
-
-Features
---------
-
-Print out the final graph to the figure called output.png
+* Documentation: latest_ 
+.. _latest: https://mcmc.readthedocs.io.
 
 
 Todo
---------
+----
 * Some improvements on plot.py.
 
 
 Credits
----------
+-------
 
 This package was created with Cookiecutter_ and the audreyr/cookiecutter-pypackage_ project template.
 

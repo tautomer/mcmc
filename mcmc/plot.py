@@ -1,5 +1,5 @@
 # subroutine to plot out the required graphs
-# currently only contain the function to plot specified graphs
+# currently contains the function to plot specified graphs and most probable one
 import networkx as nx
 import matplotlib
 matplotlib.use('Agg')
@@ -42,6 +42,7 @@ class PlotGraph:
         plt.figure(figsize=(5, 5))
         fig = plt.figure()
         # dump out initial 1/5 of the list
+        # the value is related to T, so may need to be modified once T is changed
         ind = len(edge_list)
         ind = ind//5
         edge_list = edge_list[ind:]
@@ -56,12 +57,14 @@ class PlotGraph:
         # sort the dictionary for output
         sorted_hist = sorted(hist.items(), key=operator.itemgetter(1), reverse=True)
         # write to file
-        for key, value in sorted_hist:
-            print('{}{:4d}'.format(key, value), file=histo)
+        for i in range(len(sorted_hist)):
+            print('{:6d}{}{}{:4d}'.format(i+1, '  ', sorted_hist[i][0], sorted_hist[i][1]), file=histo)
         histo.close()
         # convert the most probable string back to list
         list_edge = ast.literal_eval(sorted_hist[0][0])
-        print('{}{}{}{}{}'.format('most probable graph structure (edges):  ', list_edge, "\n", 'number of occurrence of this graph:  ', sorted_hist[0][1]), file=summary)
+        print('{}{}{}{}{}{}{}{}'.format('total number of graphs generated under assumed equilibrium  ', len(sorted_hist), "\n",
+                                        'most probable graph structure (edges):  ', list_edge, "\n",
+                                        'number of occurrence of this graph:  ', sorted_hist[0][1]), file=summary)
         # draw
         g = nx.empty_graph(k)
         nx.draw_networkx(g, pos, edgelist=list_edge, node_size=20)
