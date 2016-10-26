@@ -47,7 +47,7 @@ The arbitrary graph needed to be plotted is named 'output.png', while most proba
 really count whether it is top 1% or not. Instead, I simply plot the one with highest histogram. In general, this range is tighter
 than 1%.
 
-The sorted histograms are stored in 'sorted_histogram', where the first column is edges and the second one is histograms.
+The sorted histograms are stored in 'sorted_histogram', where the columns are indices, edges and histograms, respectively.
 
 Some summarized information is saved to 'summary' for your convenience.
 
