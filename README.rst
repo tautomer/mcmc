@@ -2,18 +2,22 @@
 mcmc ---- Markov Chain Monte Carlo
 ===============================
 
-.. image:: https://travis-ci.org/tautomer/mcmc.svg?branch=master
+.. image:: https://travis-ci.org/tautomer/mcmc.svg?branch=test
         :target: https://travis-ci.org/tautomer/mcmc
 
 .. image:: https://readthedocs.org/projects/markov-chain/badge/?version=latest
         :target: http://markov-chain.readthedocs.io/en/latest/?badge=latest
         :alt: Documentation Status
 
-.. image:: https://coveralls.io/repos/github/tautomer/mcmc/badge.svg?branch=master
-        :target: https://coveralls.io/github/tautomer/mcmc?branch=master
+.. image:: https://coveralls.io/repos/github/tautomer/mcmc/badge.svg?branch=test
+        :target: https://coveralls.io/github/tautomer/mcmc?branch=test
 
 
 A small program for Markov chain Monte Carlo simulations.
+
+
+Features
+--------
 
 Currently you can run the program under the root directory by 'python3 mcmc/mcmc.py'. 
 There are four parameters for this program,
@@ -48,12 +52,6 @@ Some summarized information is saved to 'summary' for your convenience.
 
 * Free software: MIT license
 * Documentation: https://mcmc.readthedocs.io.
-
-
-Features
---------
-
-Print out the final graph to the figure called output.png
 
 
 Todo
