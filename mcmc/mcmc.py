@@ -6,10 +6,10 @@
 # They are specified at the beginning of the program.
 
 # Begin importing packages
-from mcmc.graph_init import GetInit
-from mcmc.update_graph import UpdateGraph
-from mcmc.monte_carlo import MonteCarlo
-from mcmc.plot import PlotGraph
+from graph_init import GetInit
+from update_graph import UpdateGraph
+from monte_carlo import MonteCarlo
+from plot import PlotGraph
 import sys
 import os
 dir_root = os.path.realpath(
@@ -20,7 +20,7 @@ sys.path.insert(0, dir_root)
 k = 8
 r = 1
 T = 300
-nsteps = 3000
+nsteps = 300
 
 # calculate number of all possible edges
 etot = k*(k-1)/2
