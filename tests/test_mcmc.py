@@ -15,7 +15,6 @@ from mcmc.graph_init import GetInit
 from mcmc.update_graph import UpdateGraph
 from mcmc.monte_carlo import MonteCarlo
 from mcmc.plot import PlotGraph
-#from mcmc.mcmc import mcmc
 
 mc = MonteCarlo()
 pg = PlotGraph()
@@ -44,6 +43,7 @@ class TestInit(unittest.TestCase):
         w = self.init.calc_weight(mydict, 2)
         self.assertEqual(w[0][1], w[1][0])
 
+
 class TestUpdate(unittest.TestCase):
 
     def setUp(self):
@@ -54,6 +54,12 @@ class TestUpdate(unittest.TestCase):
         g, temp = self.init.init_graph(4)
         mylist = self.up.chk_bridges(g)
         self.assertEqual(3, len(mylist))
+
+    def test_update_graph_returns_different_graphs(self):
+        g, temp = self.init.init_graph(4)
+        keep = [[0,1], [0,2], [0,3]]
+        test = self.up.change_edges(4, g, keep)
+        self.assertEqual(False, nx.is_isomorphic(g, test))
 
 
 
