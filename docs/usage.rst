@@ -4,4 +4,9 @@ Usage
 
 To use mcmc in a project::
 
-    import mcmc
+    python3 path_to_source_code_folder/mcmc.py
+
+To test the code, tyoe::
+
+    nosetests -v
+
