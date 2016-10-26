@@ -15,8 +15,7 @@ import unittest
 from mcmc.graph_init import GetInit
 from mcmc.update_graph import UpdateGraph
 from mcmc.monte_carlo import MonteCarlo
-
-mc = MonteCarlo()
+import mcmc.mcmc
 
 
 class TestInit(unittest.TestCase):

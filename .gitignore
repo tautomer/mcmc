@@ -65,11 +65,11 @@ target/
 # vim swap file
 *.swp
 mcmc/*.swp
-mcmc/output
+output
 output.png
-mcmc/.coverage
-mcmc/edgelist
-mcmc/top.png
-mcmc/sorted_histogram
-mcmc/summary
+.coverage
+edgelist
+top.png
+sorted_histogram
+summary
 .idea/*
