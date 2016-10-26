@@ -14,8 +14,7 @@ import sys
 import os
 dir_root = os.path.realpath(
                os.path.join(os.path.dirname(os.path.realpath(__file__)), '..'))
-if not dir_root in sys.path:
-    sys.path.insert(0, dir_root)
+sys.path.insert(0, dir_root)
 
 # Set parameters
 k = 8
@@ -90,8 +89,12 @@ for i in range(1, nsteps):
 print('{}{}{}{}{}'.format('the expected number of edges connected to vertex 0:  ', neighbor_0/nsteps, "\n", 'the expected number of edges in the entire graph:  ', n_edge/nsteps), file=summary)
 
 # demo of output, just plot the last graph in the list
-pg.plot_this_graph(pos, tmp)
+# nth graph needed
+nth = nsteps
+pg.plot_this_graph(k, pos, nth, edge_list)
+# output sorted histogram and plot out the most probable graph
 pg.plot_most_probable(k, pos, edge_list, summary)
+
 # close files
 expectations.close()
 edges.close()

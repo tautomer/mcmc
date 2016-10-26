@@ -9,20 +9,52 @@ Tests for `mcmc` module.
 """
 
 
-import sys
+import networkx as nx
 import unittest
+from mcmc.graph_init import GetInit
+from mcmc.update_graph import UpdateGraph
+from mcmc.monte_carlo import MonteCarlo
+from mcmc.plot import PlotGraph
+#from mcmc.mcmc import mcmc
 
-from mcmc import mcmc
+mc = MonteCarlo()
+pg = PlotGraph()
 
 
-
-class TestMcmc(unittest.TestCase):
+class TestInit(unittest.TestCase):
 
     def setUp(self):
-        pass
+        self.init = GetInit()
 
-    def tearDown(self):
-        pass
+#    def tearDown(self):
+#        pass
 
-    def test_000_something(self):
-        pass
+#    def test_000_something(self):
+#        pass
+
+    def test_init_graph_fail_with_string_input(self):
+        self.assertRaises(ValueError, self.init.init_graph, 1.2)
+
+    def test_init_graph_success_with_string_input(self):
+        g, test = self.init.init_graph(4)
+        self.assertEqual(True, nx.is_connected(g))
+
+    def test_calc_weight_return_correct_values(self):
+        mydict = {0: [0, 3], 1: [4, 0]}
+        w = self.init.calc_weight(mydict, 2)
+        self.assertEqual(w[0][1], w[1][0])
+
+class TestUpdate(unittest.TestCase):
+
+    def setUp(self):
+        self.up = UpdateGraph()
+        self.init = GetInit()
+
+    def test_chk_bridges_return_the_correct_value(self):
+        g, temp = self.init.init_graph(4)
+        mylist = self.up.chk_bridges(g)
+        self.assertEqual(3, len(mylist))
+
+
+
+

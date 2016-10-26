@@ -15,14 +15,16 @@ class PlotGraph:
 
     # plot the graph specified in the bracket
     # save to output.png
-    def plot_this_graph(self, pos, g):
+    def plot_this_graph(self, k, pos, ind, mylist):
         # would like to share this property for all possible functions
         # may need optimization later
         plt.figure(figsize=(5, 5))
         fig = plt.figure()
         # draw graph with pos, actually not necessary
         # just in case I mess up the weights
-        nx.draw_networkx(g, pos, node_size=20)
+        g = nx.empty_graph(k)
+        list_edge = ast.literal_eval(mylist[ind-1])
+        nx.draw_networkx(g, pos, edgelist=list_edge, node_size=20)
         fig.savefig('output.png')
 
     # a really ugly way to plot out the most probable graph
