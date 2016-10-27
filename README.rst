@@ -43,8 +43,8 @@ The list of all edges will be written into 'edgelist'.
 The file 'output' contains number of steps, average degree of node 0, average number of edges, and average max length of all shortest paths
 from 0, respectively, and they are stored step by step to show the time evolution, which can also be used to check convergence.
 
-The arbitrary graph needed to be plotted is named 'output.png', while most probable one is called 'top.png'. Note that I do not
-really count whether it is top 1% or not. Instead, I simply plot the one with highest histogram. In general, this range is tighter
+The arbitrary graph needed to be drawn is named 'output.png', while most probable one is called 'top.png'. Note that I do not
+really count whether it is top 1% or not. Instead, I simply draw the one with highest histogram. In general, this range is tighter
 than 1%.
 
 The sorted histograms are stored in 'sorted_histogram', where the columns are indices, edges and histograms, respectively.
@@ -59,7 +59,7 @@ Some summarized information is saved to 'summary' for your convenience.
 
 Todo
 ----
-* Some improvements on plot.py.
+* Some improvements on draw.py.
 
 
 Credits

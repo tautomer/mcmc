@@ -1,5 +1,5 @@
-# subroutine to plot out the required graphs
-# currently contains the function to plot specified graphs and most probable one
+# subroutine to draw the required graphs
+# currently contains the function to draw specified graphs and most probable one
 import networkx as nx
 import matplotlib
 matplotlib.use('Agg')
@@ -8,14 +8,14 @@ import operator
 import ast
 
 
-class PlotGraph:
+class DrawGraph:
 
     def __init__(self):
         pass
 
-    # plot the graph specified in the bracket
+    # draw the graph specified in the bracket
     # save to output.png
-    def plot_this_graph(self, k, pos, ind, mylist):
+    def draw_this_graph(self, k, pos, ind, mylist):
         # would like to share this property for all possible functions
         # may need optimization later
         plt.figure(figsize=(5, 5))
@@ -27,7 +27,7 @@ class PlotGraph:
         nx.draw_networkx(g, pos, edgelist=list_edge, node_size=20)
         fig.savefig('output.png')
 
-    # a really ugly way to plot out the most probable graph
+    # a really ugly way to draw the most probable graph
     # I first convert the list of edge list to string so that I can compare and count them
     # then I need restore the strings back to list and draw graph with 'edgelist' argument
     # require k, number of nodes
@@ -35,7 +35,7 @@ class PlotGraph:
     # as I actually regenerate the graph from very beginning based on the sorted edge list
     # if only require an example of top 1%, current algorithm is ok
     # need improvement later
-    def plot_most_probable(self, k, pos, edge_list, summary):
+    def draw_most_probable(self, k, pos, edge_list, summary):
         # I/O
         histo = open('sorted_histogram', 'w')
         # again may require optimization

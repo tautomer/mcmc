@@ -15,13 +15,13 @@ sys.path.append(dir_root)
 from graph_init import GetInit
 from update_graph import UpdateGraph
 from monte_carlo import MonteCarlo
-from plot import PlotGraph
+from draw import DrawGraph
 
 # Set parameters
 k = 8
 r = 1
 T = 300
-nsteps = 30
+nsteps = 300
 
 # calculate number of all possible edges
 etot = k*(k-1)/2
@@ -29,7 +29,7 @@ etot = k*(k-1)/2
 gi = GetInit()
 ug = UpdateGraph()
 mc = MonteCarlo()
-pg = PlotGraph()
+pg = DrawGraph()
 
 
 # Generate initial graph and all the inital properties needed for future use
@@ -85,7 +85,7 @@ for i in range(1, nsteps):
     n_edge += tmp.number_of_edges()
     sum_max_len += max_i
     # for checking propose
-    # plotting of the 'trajectory' can be pretty cool
+    # drawing of the 'trajectory' can be pretty cool
     print('{:6d}{:9.4f}{:9.4f}{:9.4f}'.format(i+1, neighbor_0/(i+1), n_edge/(i+1), sum_max_len/(i+1)), file=expectations)
     print('{}'.format(tmp.edges()), file=edges)
 
@@ -93,14 +93,14 @@ for i in range(1, nsteps):
 print('{}{}{}{}{}'.format('the expected number of edges connected to vertex 0:  ', neighbor_0/nsteps, "\n",
                           'the expected number of edges in the entire graph:  ', n_edge/nsteps), file=summary)
 
-# demo of output, just plot the last graph in the list
+# demo of output, just draw the last graph in the list
 # nth graph needed
 nth = nsteps
-pg.plot_this_graph(k, pos, nth, edge_list)
-# output sorted histogram and plot out the most probable graph
+pg.draw_this_graph(k, pos, nth, edge_list)
+# output sorted histogram and draw the most probable graph
 # since the data will be truncated adn over-written for counting histogram under equilibrium
-# it's recommended to plot out the arbitrary one first
-pg.plot_most_probable(k, pos, edge_list, summary)
+# it's recommended to draw the arbitrary one first
+pg.draw_most_probable(k, pos, edge_list, summary)
 
 # close files
 expectations.close()
